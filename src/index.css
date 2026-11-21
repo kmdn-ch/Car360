@@ -1,0 +1,138 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont,
+      'Segoe UI', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    overflow-x: clip;
+    margin: 0;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    &:focus-visible {
+      outline: 2px solid #0066ff;
+      outline-offset: 2px;
+    }
+  }
+}
+
+@utility font-display {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Liseré architectural BMW M (2px) */
+.m-stripe {
+  background: linear-gradient(
+    90deg,
+    #00a0e3 0%,
+    #00a0e3 33.33%,
+    #1c3d8c 33.33%,
+    #1c3d8c 66.66%,
+    #e2231a 66.66%,
+    #e2231a 100%
+  );
+}
+
+/* Fond studio automobile en dégradé multicouche */
+.app-canvas {
+  background-color: #f2f5fa;
+  background-image:
+    radial-gradient(ellipse 75% 50% at 12% -5%, rgba(0, 102, 255, 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 60% 45% at 92% 10%, rgba(14, 165, 233, 0.14) 0%, transparent 55%),
+    linear-gradient(180deg, #f8fbff 0%, #ebf1fb 52%, #e2eaf6 100%);
+  background-attachment: fixed;
+}
+
+.dark .app-canvas {
+  background-color: #06080d;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 14% -8%, rgba(0, 102, 255, 0.34) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 48% at 88% 10%, rgba(28, 61, 140, 0.32) 0%, transparent 56%),
+    radial-gradient(ellipse 55% 45% at 50% 100%, rgba(14, 165, 233, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #0c1322 0%, #070b15 48%, #05070e 100%);
+  background-attachment: fixed;
+}
+
+/* Panneau structurel épuré sans ombres SaaS */
+.panel {
+  @apply rounded-[10px] border border-[#CBD5E1]/75 bg-white/62 backdrop-blur-lg dark:border-white/[0.11] dark:bg-[#0B101B]/52;
+}
+
+/* Plaque d'immatriculation suisse authentique */
+.ch-plate {
+  @apply inline-flex items-center rounded-[5px] border border-slate-300 bg-white px-2 py-0.5 font-display text-[11px] font-semibold tracking-[0.06em] text-[#0B0C0F] dark:border-white/25 dark:bg-[#F5F5F7];
+}
+
+/* Curseur de simulation sobre */
+input[type='range'].bmw-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 9999px;
+  background: #d1d5db;
+  cursor: pointer;
+}
+
+.dark input[type='range'].bmw-range {
+  background: #24262d;
+}
+
+input[type='range'].bmw-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #0066ff;
+  border: 2px solid #ffffff;
+  transition: transform 0.12s ease;
+}
+
+input[type='range'].bmw-range::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type='range'].bmw-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #0066ff;
+  border: 2px solid #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
